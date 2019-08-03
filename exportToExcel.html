@@ -1,92 +1,76 @@
-<table id="exTable" border="1">
-    <thead class="lockedRecordsBg">
-        <tr>
-            <th>S#</th>
-            <th>name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Country</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td rel="client">1</td>
-            <td rel="regionName">Sudhir K Gupta</td>
-            <td rel="date">sudhirgupta.456@gmail.com</td>
-            <td rel="shift">+91 89********</td> 
-            <td rel="shift">India</td>             
-        </tr>
-        <tr>
-            <td rel="client">2</td>
-            <td rel="regionName">Sudhir K Gupta</td>
-            <td rel="date">test@gmail.com</td>
-            <td rel="shift">+91 89********</td> 
-            <td rel="shift">USA</td>             
-        </tr>
-        <tr>
-            <td rel="client">2</td>
-            <td rel="regionName">Sudhir K Gupta</td>
-            <td rel="date">test@gmail.com</td>
-            <td rel="shift">+91 89********</td>    
-            <td rel="shift">USA</td>             
-        </tr>
-        <tr>
-            <td rel="client">2</td>
-            <td rel="regionName">Sudhir K Gupta</td>
-            <td rel="date">test@gmail.com</td>
-            <td rel="shift">+91 89********</td>                                        
-             <td rel="shift">USA</td> 
-        </tr>
-        <tr>
-            <td rel="client">2</td>
-            <td rel="regionName">Sudhir K Gupta</td>
-            <td rel="date">test@gmail.com</td>
-            <td rel="shift">+91 89********</td>                                        
-        </tr>
-        <tr>
-            <td rel="client">2</td>
-            <td rel="regionName">Sudhir K Gupta</td>
-            <td rel="date">test@gmail.com</td>
-            <td rel="shift">+91 89********</td>                                        
-        </tr>        
-    </tbody>
-</table>                                      
-<script>
-function exportToExcel(tableID){
-    var tab_text="<table border='2px'><tr bgcolor='#87AFC6' style='height: 75px; text-align: center; width: 250px'>";
-    var textRange; var j=0;
-    tab = document.getElementById(tableID); // id of table
-
-    for(j = 0 ; j < tab.rows.length ; j++)
-    {
-
-        tab_text=tab_text;
-        tab_text=tab_text+tab.rows[j].innerHTML.toUpperCase()+"</tr>";
-        //tab_text=tab_text+"</tr>";
-    }
-
-    tab_text= tab_text+"</table>";
-    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, ""); //remove if u want links in your table
-    tab_text= tab_text.replace(/<img[^>]*>/gi,""); //remove if u want images in your table
-    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); //remove input params
-
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
-
-    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
-    {
-        txtArea1.document.open("txt/html","replace");
-        txtArea1.document.write( 'sep=,\r\n' + tab_text);
-        txtArea1.document.close();
-        txtArea1.focus();
-        sa=txtArea1.document.execCommand("SaveAs",true,"sudhir123.txt");
-    }
-    else {
-       sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
-    }
-    
-    return (sa);
-}
-</script>
-
-
-<input type="button" value="export" onclick="exportToExcel('exTable')" />
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Export To Excel with pure JavaScript</title>
+		<link rel="icon" href="https://cdn0.iconfinder.com/data/icons/fatcow/32x32/table_excel.png" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div>
+			<table id="exTable" border="2">
+				<thead class="lockedRecordsBg">
+					<tr bgcolor='#87AFC6' style='height: 75px; text-align: center; width: 250px'>
+						<th style="width:40px">S#</th>
+						<th>name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Country</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>1</th>
+						<td>Sudhir K Gupta</td>
+						<td>test@test.com</td>
+						<td>+91 45********</td>
+						<td>India</td>
+					</tr>
+					<tr>
+						<th style="height:0px">2</th>
+						<td style="height:0px">This row will be hidden in excel</td>
+						<td style="font-style:italic">Right click and unhide in excel</td>
+						<td style="height:0px">+91 29********</td>
+						<td style="height:0px">Denmark</td>
+					</tr>
+					<tr>
+						<th>3</th>
+						<td>Test 123</td>
+						<td style="text-decoration: line-through;">line through text</td>
+						<td style="background-color:blue;color:white" colspan="2"> bg =  blue and color = white and merged column</td>
+					</tr>
+					<tr>
+						<th>4</th>
+						<td style="height:160px; padding:5px">
+							<img src="https://avatars0.githubusercontent.com/u/4952560?s=460&v=4" height="100" width="100" />
+						</td>
+						<td style="font-weight:bold">test@gmail.com</td>
+						<td></td>
+						<td>USA</td>
+					</tr>
+					<tr>
+						<th>5</th>
+						<td>Sameer</td>
+						<td style="text-decoration: line-through;">like through text</td>
+						<td>+91 29********</td>
+						<td>Switzerland</td>
+					</tr>
+					<tr>
+						<th>6</th>
+						<td>Comedymood.com</td>
+						<td>test@gmail.com</td>
+						<td rowspan="2">Merge row 2 and 3</td>
+						<td>India</td>
+					</tr>
+					<tr>
+						<th>7</th>
+						<td>Sudhir K Gupta</td>
+						<td>test@gmail.com</td>
+						<td style="color:red">Canada (color = red)</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="button" value="export" onclick="exportToExcel('exTable')" />
+		</div>
+		<script src="exportToExcel.js" defer></script>
+	</body>
+</html>
