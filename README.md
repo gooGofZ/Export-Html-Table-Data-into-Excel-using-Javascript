@@ -14,9 +14,9 @@ Also, you want to put style such as text color, background, row height or images
 8. **No Dependency | Only Vanilla JavaScript.**
 
 # Uses
-- Download this packages
-- Pay attension on html file, learn how css/ images has implimented
-- Link exportToExcel.js in your file where you want perfom export action.
+- Download this package
+- Pay attention on html file, learn how CSS/ images has implemented
+- Link exportToExcel.js in your file where you want perform export action.
 - Create Table, give same id as given in exportToExcel.js (or just copy paste)
 - Create button (copy from exportToExcel.html) and apply onclick event.
-- That's it.. just try and enjoy.
+- That’s it. just try and enjoy.
